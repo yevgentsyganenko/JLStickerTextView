@@ -10,10 +10,10 @@ import UIKit
 
 public class JLStickerImageView: UIImageView, UIGestureRecognizerDelegate {
     public var currentlyEditingLabel: JLStickerLabelView!
-    private var labels: NSMutableArray!
+    fileprivate var labels: NSMutableArray!
     private var renderedView: UIView!
     
-    private lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer! = {
+    fileprivate lazy var tapOutsideGestureRecognizer: UITapGestureRecognizer! = {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(JLStickerImageView.tapOutside))
         tapGesture.delegate = self
         return tapGesture
@@ -58,7 +58,7 @@ extension JLStickerImageView {
         labelView.delegate = self
         labelView.showsContentShadow = false
         //labelView.enableMoveRestriction = false
-        labelView.borderColor = UIColor.white()
+        labelView.borderColor = UIColor.white
         labelView.labelTextView.fontName = "Baskerville-BoldItalic"
         self.addSubview(labelView)
         self.currentlyEditingLabel = labelView
@@ -88,7 +88,7 @@ extension JLStickerImageView {
         let imageSize = self.image?.size
         let aspectRatio = imageSize!.width / imageSize!.height
         
-        if imageSize?.width > imageSize?.height {
+        if imageSize!.width > imageSize!.height {
             self.bounds.size.width = self.superview!.bounds.size.width
             self.bounds.size.height = self.superview!.bounds.size.width / aspectRatio
         }else {
